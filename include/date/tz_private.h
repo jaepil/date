@@ -290,7 +290,7 @@ struct transition
     operator<<(std::ostream& os, const transition& t)
     {
         using date::operator<<;
-        os << t.timepoint << "Z ";
+        os << std::chrono::system_clock::to_time_t(t.timepoint) << "Z ";
         if (t.info->offset >= std::chrono::seconds{0})
             os << '+';
         os << make_time(t.info->offset);

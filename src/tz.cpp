@@ -2730,7 +2730,7 @@ std::ostream&
 operator<<(std::ostream& os, const leap_second& x)
 {
     using namespace date;
-    return os << x.date_ << "  +";
+    return os << std::chrono::system_clock::to_time_t(x.date_) << "  +";
 }
 
 #if USE_OS_TZDB
